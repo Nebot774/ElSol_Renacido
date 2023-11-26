@@ -3,6 +3,7 @@ package com.example.el_sol;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,7 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ImagenSolar solarImage = solarImages.get(position);
+        holder.imageView.setImageResource(ImagenSolar.getImageUrl());
         // Aquí configuras los elementos del ViewHolder con los datos de solarImage
         // Configura los listeners para tus eventos
     }
@@ -36,13 +38,16 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
         return solarImages.size();
     }
 
+    //classe viewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Define los elementos de la vista aquí, como ImageView, Toolbar, etc.
+        ImageView imageView; // Asegúrate de que imageView sea de tipo ImageView
 
         public ViewHolder(View itemView) {
             super(itemView);
-            // Inicializa tus vistas aquí
+            imageView = (ImageView) itemView.findViewById(R.id.imageView); // Casting a ImageView
+            // Inicializar otros componentes, como Toolbar, si es necesario
         }
     }
+
 }
 

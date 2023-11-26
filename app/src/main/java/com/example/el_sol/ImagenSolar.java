@@ -1,22 +1,22 @@
 package com.example.el_sol;
 
 public class ImagenSolar {
-    private String imageUrl;
+    private static int imageUrl;
     private String name;
 
     // Constructor
-    public ImagenSolar(String imageUrl, String name) {
+    public ImagenSolar(int imageUrl, String name) {
         this.imageUrl = imageUrl;
         this.name = name;
     }
 
     // Getter para imageUrl
-    public String getImageUrl() {
+    public static int getImageUrl() {
         return imageUrl;
     }
 
     // Setter para imageUrl
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(int imageUrl) {
         this.imageUrl = imageUrl;
     }
 
