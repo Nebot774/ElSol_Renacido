@@ -1,7 +1,7 @@
 package com.example.el_sol;
 
 public class ImagenSolar {
-    private static int imageUrl;
+    private  int imageUrl;
     private String name;
 
     // Constructor
@@ -11,7 +11,7 @@ public class ImagenSolar {
     }
 
     // Getter para imageUrl
-    public static int getImageUrl() {
+    public int getImageUrl() {
         return imageUrl;
     }
 

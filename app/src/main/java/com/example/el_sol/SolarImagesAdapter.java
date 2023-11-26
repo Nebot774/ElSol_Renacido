@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toolbar;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +30,9 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ImagenSolar solarImage = solarImages.get(position);
-        holder.imageView.setImageResource(ImagenSolar.getImageUrl());
+        holder.imageView.setImageResource(solarImage.getImageUrl()); // Asegúrate de que sea getImageResId() si estás usando IDs de recursos
 
-        //configuramos el menu en el Toolbar
+        // Configuración del menú en el Toolbar
         holder.toolbar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.action_copy) {
@@ -46,19 +47,17 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
 
         holder.toolbar.getMenu().clear();
         holder.toolbar.inflateMenu(R.menu.menu_item);
-
     }
+
 
     //metodo para copiar i eliminar items
     private void copyItem(int position) {
-        // Suponiendo que getImagenResId() retorna un int que es el ID del recurso de la imagen
-        int imageResId = solarImages.get(position). getImageUrl();
-        String imageName = solarImages.get(position).getName();
-
-        ImagenSolar copiedImage = new ImagenSolar(imageResId, imageName);
-        solarImages.add(position, copiedImage); // Añade el ítem copiado en la misma posición
+        ImagenSolar originalImage = solarImages.get(position);
+        ImagenSolar copiedImage = new ImagenSolar(originalImage.getImageUrl(), originalImage.getName());
+        solarImages.add(position, copiedImage);
         notifyItemInserted(position);
     }
+
 
     //metodo eliminar el item
     private void deleteItem(int position) {
@@ -76,7 +75,7 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
     //classe viewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView; // Asegúrate de que imageView sea de tipo ImageView
-        Toolbar toolbar;
+        androidx.appcompat.widget.Toolbar toolbar;
         public ViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.imageView); // Casting a ImageView

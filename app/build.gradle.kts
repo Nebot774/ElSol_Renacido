@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.el_sol"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.el_sol"
