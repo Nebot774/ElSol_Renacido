@@ -32,6 +32,10 @@ public class SolarImagesAdapter extends RecyclerView.Adapter<SolarImagesAdapter.
         ImagenSolar solarImage = solarImages.get(position);
         holder.imageView.setImageResource(solarImage.getImageUrl()); // Asegúrate de que sea getImageResId() si estás usando IDs de recursos
 
+        //establecemos el titulo a la toolbar con el nombre de la imagen
+        holder.toolbar.setTitle(solarImage.getName());
+
+
         // Configuración del menú en el Toolbar
         holder.toolbar.setOnMenuItemClickListener(item -> {
             int itemId = item.getItemId();
